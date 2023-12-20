@@ -3,7 +3,7 @@
 class View
 {
     private $fichier;
-    private $titre;
+
     
     public function __construct($action)
     {
@@ -15,7 +15,7 @@ class View
     public function generer($donnees)
     {
         $contenu = $this->genererFichier($this->fichier, $donnees);
-        $vue = $this->genererFichier('./templates/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererFichier('views/gabarit.php', array('contenu' => $contenu));
         echo $vue;
     }
 

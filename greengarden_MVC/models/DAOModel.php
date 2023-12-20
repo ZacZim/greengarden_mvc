@@ -1,6 +1,6 @@
 <?php
 
-abstract class DAOModel
+abstract  class DAOModel
 {
     private $host = "127.0.0.1";
     private $user = "root";
@@ -9,11 +9,34 @@ abstract class DAOModel
     private $charset = "utf8";
 
     //instance courante de la connexion
-    private $bdd;
+    protected $bdd;
 
     //stockage de l'erreur éventuelle du serveur mysql
     private $error;
 
+    public function __construct()
+    {
+        $this->connexion(); // Appel de la méthode connexion() lors de l'instanciation de la classe
+    }
+
+    /* méthode de connexion à la base de donnée */
+    private function connexion() 
+    {
+        try {
+            // On se connecte à MySQL
+            $this->bdd = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->database . ';charset=' . $this->charset, $this->user, $this->password);
+            return $this->bdd;
+        } catch (Exception $e) {
+            // En cas d'erreur, on affiche un message et on arrête tout
+            $this->error = 'Erreur : ' . $e->getMessage();
+        }
+    }
+
+    /* méthode pour fermer la connexion à la base de données */
+    private function disconnect()
+    {
+        $this->bdd = null;
+    }
 
 
     //méthode pour récupérer les résultats d'une requête SQL
@@ -42,23 +65,4 @@ abstract class DAOModel
         }
         return $resultat;
     }
-
-    /* méthode de connexion à la base de donnée */
-    private function connexion()
-    {
-        try {
-            // On se connecte à MySQL
-            $this->bdd = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->database . ';charset=' . $this->charset, $this->user, $this->password);
-        } catch (Exception $e) {
-            // En cas d'erreur, on affiche un message et on arrête tout
-            $this->error = 'Erreur : ' . $e->getMessage();
-        }
-    }
-
-    /* méthode pour fermer la connexion à la base de données */
-    private function disconnect()
-    {
-        $this->bdd = null;
-    }
-
 }
