@@ -11,14 +11,14 @@ class Login extends DAOModel
     {
         $results = array();                             //fonction pour récupérer et parcourir les données de la bdd 
 
-        $stmt = $this->bdd->getResults($query);         //on exécute la requête SQL
+        $stmt = $this->getResults($query);              //on exécute la requête SQL
 
         if (!$stmt) {                                   //si la requête ne s'exécute pas, on affiche l'erreur
-            $this->error = $this->errorInfo();          //stockage de l'erreur dans la variable error
+            // $this->error = $this->errorInfo();       //stockage de l'erreur dans la variable error
             return false;                               //on retourne false
         } else {                                        //sinon, on retourne le résultat de la requête
-            // fetch uniquement PDO associative 
-            return $stmt->fetch(PDO::FETCH_ASSOC);      //on retourne le résultat de la requête
+            
+        return $stmt;                                   //on retourne le résultat de la requête
         }
     }
 
@@ -27,4 +27,7 @@ class Login extends DAOModel
         $sql = "SELECT * FROM t_d_user WHERE `Login` = '$Pseudonyme' ";
         return $this->getLogin($sql);
     }
+
+    
+    
 }

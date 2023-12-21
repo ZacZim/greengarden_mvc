@@ -18,20 +18,22 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <?php if (isset($_SESSION['pseudo']) && $_SESSION['user_type'] == 2) { ?>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="admin.php">Admin</a>
+                                <a class="nav-link text-white" href="?action=admin.php">Admin</a>
                             </li>
                         <?php } ?>
                         <?php if (isset($_SESSION['pseudo']) == true) { ?>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="produits.php">produit</a>
+                                <a class="nav-link text-white" href="?action=produit.php">produit</a>
                             </li>
                         <?php } ?>
                     </ul>
+
                     <?php if (isset($_SESSION['pseudo']) == false) { ?>
                         <a style="color:white;" href="?action=inscription">Inscription</a>
                     <?php } else { ?>
-                        <a style="color:red;" class="d-flex justify-content-center " title="Cliquez ici pour vous déconnecter" href='deco.php'>Déconnexion</a>
+                        <a style="color:red;" class="d-flex justify-content-center " title="Cliquez ici pour vous déconnecter" href="scripts/logout.php">Déconnexion</a>
                     <?php } ?>
+
                 </div>
             </div>
         </nav>

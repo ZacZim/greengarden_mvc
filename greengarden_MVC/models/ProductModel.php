@@ -1,4 +1,5 @@
 <?php
+
 require_once 'DAOModel.php';
 
 class Product extends DAOModel
@@ -6,15 +7,16 @@ class Product extends DAOModel
     public function getProducts()
     {
         $sql = "SELECT * FROM t_d_produit";
-        $products=$this->getResults($sql);
+        $products = $this->getResults($sql);
         return $products;
     }
 
-    public function getProductsByCategory($idcat)
+
+    public function getProductsByCategory($categorieFiltre)
     {
-        $sql = "SELECT * FROM t_d_produit WHERE Id_Categorie =" .$idcat;
-        $products=$this->getResults($sql);
-        return $products;
+        $sql = "SELECT * FROM t_d_produit WHERE Id_Categorie =" . $categorieFiltre;
+        $productsByID = $this->getResults($sql);
+        return $productsByID;
     }
 
     public function getProductsById($id)
@@ -40,8 +42,4 @@ class Product extends DAOModel
         $this->bdd->query($sql);
     }
 
-  
-    public function modifProduct($Id_Produit)
-    {
-    }
 }

@@ -1,11 +1,48 @@
+<form method="POST" class="mb-3" action="productcat()">
+    <label for="categorie">Filtrer par catégorie :</label>
+    <select name="categorie" id="categorie" class="form-select">
+        <option value="0">Toutes les catégories</option>
+        <?php
+        foreach ($categories as $categorie) {
+            echo '<option value="' . $categorie['Id_Categorie'] . '">' . $categorie['Libelle'] . '</option>';
+        }
+        ?>
+    </select>
+    <button type="submit" class="btn btn-primary">Filtrer</button>
+</form>
+
+
+
+
+
+
+
+
 <section class="container d-flex flex-row flex-wrap">
     <?php
+    // // Récupère les produits depuis la base de données
+    // $categorieFiltre = isset($_POST['categorie']) ? $_POST['categorie'] : 0; // 0 signifie "Toutes les catégories"
+
+    // if ($categorieFiltre == 0) {
+    //     $products;
+    // } else {
+    //     $products = $productsByID ; 
+    // }
+
     // Affiche les produits en utilisant la fonction générique
     foreach ($products as $product) {
         autoCard($product);
     }
     ?>
 </section>
+
+
+
+
+
+
+
+
 
 <?php
 //Génération des card bootsrap automatique 
@@ -26,7 +63,6 @@ function autoCard($product)
         echo '<button type="submit" name="btn_modif" value="' . $product['Id_Produit'] . '" class="btn btn-warning details-btn mx-2" >Modifier</button>';
         echo '</form>';
     }
-
     echo '</div>';
     echo '</div>';
 }
