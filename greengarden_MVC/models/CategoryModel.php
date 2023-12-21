@@ -11,12 +11,5 @@ class Category extends DAOModel
         $categories = $this->getResults($sql);
         return $categories;
     }
-
-
     
-
-
-   
 }
-
-

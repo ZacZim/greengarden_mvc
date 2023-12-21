@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" href="index.php">GreenGarden</a>
+                <a class="navbar-brand text-white" href="?action=index.php">GreenGarden</a>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <?php if (isset($_SESSION['pseudo']) && $_SESSION['user_type'] == 2) { ?>
@@ -29,7 +29,7 @@
                     </ul>
 
                     <?php if (isset($_SESSION['pseudo']) == false) { ?>
-                        <a style="color:white;" href="?action=inscription">Inscription</a>
+                        <a style="color:white;" href="?action=inscription" >Inscription</a>
                     <?php } else { ?>
                         <a style="color:red;" class="d-flex justify-content-center " title="Cliquez ici pour vous déconnecter" href="scripts/logout.php">Déconnexion</a>
                     <?php } ?>

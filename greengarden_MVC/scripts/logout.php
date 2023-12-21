@@ -10,7 +10,7 @@ if (ini_get("session.use_cookies")) {                    //on vérifie si les co
 }
 
 session_destroy();                                       //on détruit la session
-header('location: ../index.php');                           //on redirige vers la page de connexion
+header('location: ../?action=index.php');                           //on redirige vers la page de connexion
 
 ob_end_flush();
 

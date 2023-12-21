@@ -20,7 +20,7 @@
                                 <div class="col-auto m-3 d-flex justify-content-center">
                                     <p><?php if(isset($error)){ print $error; } ?>
                                 </div>
-                                <p class="text-center text-muted mt-4 mb-0">Vous n'avez pas de compte ? <a href="?action=inscription.php" class="fw-bold text-body"><u>S'enregistrer</u></a></p>
+                                <p class="text-center text-muted mt-4 mb-0">Vous n'avez pas de compte ? <a href="?action=inscription" class="fw-bold text-body"><u>S'enregistrer</u></a></p>
                             </form>
                         </div>
                     </div>

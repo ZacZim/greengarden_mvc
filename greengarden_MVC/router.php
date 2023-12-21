@@ -23,50 +23,62 @@ class Router
         $this->controllerRegister = new ControllerRegister();
     }
 
+    // A AJOUTER dans form de viewProducts: action="productcat()"
+    // + reretourer avec $this->controllerProduct->productsbycat($id); ???
+
     public function routerRequete()
     {
-        switch (isset($_GET['action'])) {
-            case "produit":
-                if (isset($_SESSION['pseudo'])) {
-                    $this->controllerProduct->products();
-                } else {
-                    $this->controllerLogin->login();
-                }
-                break;
-
-            case "admin":
-                if (isset($_SESSION['pseudo']) && $_SESSION['user_type'] == 2) {
-                // $this->controllerAdmin->admin();
-            } else {
-                $this->controllerProduct->products();
-            }
-                break;
-
-            case "inscription":
-                $this->controllerRegister->register();
-                break;
-
-            default:
-                $this->controllerLogin->login();
-                break;
-        }
-    }
-
-
-
-
-
-
-    public function routerRequeteIFELSE() {
         if (isset($_SESSION['pseudo'])) {
-            if ($_SESSION['user_type'] = 2) {
-                // $this->controllerAdmin->pageAdmin();
+            if ($_SESSION['user_type'] == 2) {
+                // à modifier pour la page admin plus tard
+                $this->controllerProduct->products();
             } else {
                 $this->controllerProduct->products();
             }
         } else {
-            $this->controllerLogin->login();
-            // $this->controllerRegister->register();
+            switch ($_GET['action']) {
+                default:
+                    $this->controllerLogin->login();
+                    break;
+
+                case "login":
+                    $this->controllerLogin->login();
+                    break;
+
+                case "inscription":
+                    $this->controllerRegister->register();
+                    break;
+            }
         }
     }
+
+    // ANCIN ROUTEUR
+    // public function routerRequeteOLD()
+    // {
+    //     switch (isset($_GET['action'])) {
+    //         case "produit":
+    //             if (isset($_SESSION['pseudo'])) {
+    //                 $this->controllerProduct->products();
+    //             } else {
+    //                 $this->controllerLogin->login();
+    //             }
+    //             break;
+
+    //         case "admin":
+    //             if (isset($_SESSION['pseudo']) && $_SESSION['user_type'] == 2) {
+    //                 // $this->controllerAdmin->admin();
+    //             } else {
+    //                 $this->controllerProduct->products();
+    //             }
+    //             break;
+
+    //         case "inscription":
+    //             $this->controllerRegister->register();
+    //             break;
+
+    //         default:
+    //             $this->controllerLogin->login();
+    //             break;
+    //     }
+    // }
 }
