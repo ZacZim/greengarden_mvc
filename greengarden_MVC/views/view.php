@@ -4,7 +4,6 @@ class View
 {
     private $fichier;
 
-    
     public function __construct($action)
     {
         // on récupère le nom du fichier à partir de l'action

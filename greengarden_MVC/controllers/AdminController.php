@@ -11,6 +11,4 @@ class ControllerAdmin
         $this->admin = new Admin();
     }
     
-    
-
 }

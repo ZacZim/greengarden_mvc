@@ -1,4 +1,4 @@
-<form method="POST" class="mb-3" action="productcat()">
+<form method="GET" class="mb-3" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label for="categorie">Filtrer par catégorie :</label>
     <select name="categorie" id="categorie" class="form-select">
         <option value="0">Toutes les catégories</option>
@@ -11,37 +11,20 @@
     <button type="submit" class="btn btn-primary">Filtrer</button>
 </form>
 
-
-
-
-
-
-
-
 <section class="container d-flex flex-row flex-wrap">
     <?php
     // // Récupère les produits depuis la base de données
-    // $categorieFiltre = isset($_POST['categorie']) ? $_POST['categorie'] : 0; // 0 signifie "Toutes les catégories"
-
-    // if ($categorieFiltre == 0) {
-    //     $products;
-    // } else {
-    //     $products = $productsByID ; 
-    // }
-
+    $categorieFiltre = isset($_GET['categorie']) ? $_GET['categorie'] : 0; // 0 signifie "Toutes les catégories"
+    
     // Affiche les produits en utilisant la fonction générique
     foreach ($products as $product) {
+        if ($categorieFiltre == 0 || $product['Id_Categorie'] == $categorieFiltre) {
         autoCard($product);
+        }
     }
+
     ?>
 </section>
-
-
-
-
-
-
-
 
 
 <?php

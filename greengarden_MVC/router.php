@@ -36,49 +36,15 @@ class Router
                 $this->controllerProduct->products();
             }
         } else {
-            switch ($_GET['action']) {
-                default:
-                    $this->controllerLogin->login();
-                    break;
-
-                case "login":
-                    $this->controllerLogin->login();
-                    break;
-
-                case "inscription":
+            if (isset($_GET['action'])) {
+                if ($_GET['action'] === "inscription") {
                     $this->controllerRegister->register();
-                    break;
+                } elseif ($_GET['action'] === "login") {
+                    $this->controllerLogin->login();
+                }
+            } else {
+                $this->controllerLogin->login();
             }
         }
     }
-
-    // ANCIN ROUTEUR
-    // public function routerRequeteOLD()
-    // {
-    //     switch (isset($_GET['action'])) {
-    //         case "produit":
-    //             if (isset($_SESSION['pseudo'])) {
-    //                 $this->controllerProduct->products();
-    //             } else {
-    //                 $this->controllerLogin->login();
-    //             }
-    //             break;
-
-    //         case "admin":
-    //             if (isset($_SESSION['pseudo']) && $_SESSION['user_type'] == 2) {
-    //                 // $this->controllerAdmin->admin();
-    //             } else {
-    //                 $this->controllerProduct->products();
-    //             }
-    //             break;
-
-    //         case "inscription":
-    //             $this->controllerRegister->register();
-    //             break;
-
-    //         default:
-    //             $this->controllerLogin->login();
-    //             break;
-    //     }
-    // }
 }

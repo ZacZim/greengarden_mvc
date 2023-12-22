@@ -11,6 +11,4 @@ class ControllerCategory
         $this->category = new Category();
     }
     
-
-
 }

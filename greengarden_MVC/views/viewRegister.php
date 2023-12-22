@@ -36,7 +36,7 @@
                                 <div class="col-auto m-3 d-flex justify-content-center">
                                     <p><?php if(isset($error)){ print $error; } ?>
                                 </div>
-                                <p class="text-center text-muted mt-4 mb-0">Vous avez déjà un compte ? <a href="?action=index.php" class="fw-bold text-body"><u>Se connecter</u></a></p>
+                                <p class="text-center text-muted mt-4 mb-0">Vous avez déjà un compte ? <a href="?action=login" class="fw-bold text-body"><u>Se connecter</u></a></p>
                             </form>
                         </div>
                     </div>

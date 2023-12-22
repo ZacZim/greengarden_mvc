@@ -28,6 +28,4 @@ class Login extends DAOModel
         return $this->getLogin($sql);
     }
 
-    
-    
 }

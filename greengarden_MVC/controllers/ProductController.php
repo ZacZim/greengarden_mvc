@@ -16,7 +16,6 @@ class ControllerProduct
    
     }
     
-    // Affiche les détails sur un billet
     public function products()
     {
         $products = $this->product->getProducts();
@@ -26,16 +25,14 @@ class ControllerProduct
         $vue->generer(array('products' => $products, 'categories' => $categories));
     }
 
+    public function productsbycat($id)
+    {
+        $products = $this->product->getProductsByCategory($id);
+        $categories = $this->categorie->selectCategorie();
+    
 
-       // Affiche les détails sur un billet
-       public function productsbycat($id)
-       {
-           $products = $this->product->getProductsByCategory($id);
-           $categories = $this->categorie->selectCategorie();
-        
-   
-           $vue = new View("Products");
-           $vue->generer(array('products' => $products, 'categories' => $categories));
-       }
-
+        $vue = new View("Products");
+        $vue->generer(array('products' => $products, 'categories' => $categories));
+    }
+    
 }

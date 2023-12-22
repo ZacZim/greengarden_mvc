@@ -4,13 +4,18 @@ require_once 'DAOModel.php';
 
 class Product extends DAOModel
 {
-    public function getProducts()
+    public function getProducts($categoryId = null)
     {
         $sql = "SELECT * FROM t_d_produit";
+
+        // Ajouter une clause WHERE si une catégorie est spécifiée
+        if ($categoryId !== null) {
+            $sql .= " WHERE category_id = :category_id";
+        }
+
         $products = $this->getResults($sql);
         return $products;
     }
-
 
     public function getProductsByCategory($categorieFiltre)
     {
