@@ -2,7 +2,7 @@
 
 abstract  class DAOModel
 {
-    private $host = "127.0.0.1";
+    private $host = "db";
     private $user = "root";
     private $password = "";
     private $database = "greengarden";
